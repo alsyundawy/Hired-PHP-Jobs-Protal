@@ -24,17 +24,14 @@
     <meta name="msapplication-TileImage" content="<?=HOST_ASSETS?>icon-512.png">
     <meta name="msapplication-TileColor" content="#ffffff">
 
-    <?php if (isset($_SESS["user"])) { ?>
-    <!-- (A5) WEB APP MANIFEST -- @TODO
-    <!-- https://web.dev/add-manifest/ --
+    <!-- (A5) WEB APP MANIFEST -->
+    <!-- https://web.dev/add-manifest/ -->
     <link rel="manifest" href="<?=HOST_BASE?>ADM-manifest.json">
 
-    <!-- (A6) SERVICE WORKER --
+    <!-- (A6) SERVICE WORKER -->
     <script>if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("<?=HOST_BASE?>ADM-worker.js", {scope: "./"});
+      navigator.serviceWorker.register("<?=HOST_BASE?>ADM-worker.js", {scope: "admin/"});
     }</script>
-    -->
-    <?php } ?>
 
     <!-- (A7) BOOTSTRAP -->
     <!-- https://getbootstrap.com/ -->
@@ -113,12 +110,12 @@
         <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link" href="<?=HOST_ADMIN_BASE?>">
-              <i class="mi mi-smol">school</i> Jobs @TODO
+              <i class="mi mi-smol">work</i> Jobs
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?=HOST_ADMIN_BASE?>companies">
-              <i class="mi mi-smol">school</i> Companies @TODO
+            <a class="nav-link" href="<?=HOST_ADMIN_BASE?>company">
+              <i class="mi mi-smol">business</i> Companies
             </a>
           </li>
           <li class="nav-item">

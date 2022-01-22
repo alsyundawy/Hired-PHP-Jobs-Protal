@@ -1,6 +1,6 @@
 <?php
-// (A) REGISTERED USERS ONLY
-if (!isset($_SESS["user"])) {
+// (A) ADMIN ONLY
+if (!isset($_SESS["user"]) || $_SESS["user"]["user_role"]!="A") {
   $_CORE->respond(0, "Please sign in first", null, null, 403);
 }
 

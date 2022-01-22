@@ -5,7 +5,8 @@ $_CORE->load("Route");
 
 // (B) MANUAL ROUTES
 $_CORE->Route->set([
-  "admin/*" => "ADM-index.php"
+  "admin/*" => "ADM-index.php",     // admin panel
+  "company/*" => "PAGE-company.php" // company info page
 ]);
 
 // (C) AUTO RESOLVE ROUTE

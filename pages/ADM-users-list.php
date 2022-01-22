@@ -11,11 +11,9 @@ if (is_array($users["data"])) { foreach ($users["data"] as $id=>$u) { ?>
     <small><?=$u["user_email"]?></small>
   </div>
   <div>
-    <?php if ($u["user_role"]!="I") { ?>
     <button class="btn btn-danger btn-sm mi" onclick="usr.del(<?=$id?>)">
       delete
     </button>
-    <?php } ?>
     <button class="btn btn-primary btn-sm mi" onclick="usr.addEdit(<?=$id?>)">
       edit
     </button>
