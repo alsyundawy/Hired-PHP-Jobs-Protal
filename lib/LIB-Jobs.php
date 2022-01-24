@@ -38,27 +38,35 @@ class Jobs extends Core {
 
   // (D) GET ALL OR SEARCH JOBS
   //  $search : optional, job title
+  //  $cid : optional, company id
   //  $page : optional, current page number
-  function getAll ($search=null, $page=null) {
+  function getAll ($search=null, $cid=null, $page=null) {
     // (D1) PARITAL SQL + DATA
     $sql = " WHERE `job_status`=1";
-    $data = null;
+    $data = [];
     if ($search != null) {
       $sql .= " AND `job_title` LIKE ?";
-      $data = ["%$search%"];
+      $data[] = "%$search%";
     }
+    if ($cid != null) {
+      $sql .= " AND `company_id`=?";
+      $data[] = $cid;
+    }
+    if (count($data)==0) { $data = null; }
 
     // (D2) PAGINATION
     if ($page != null) {
       $pgn = $this->core->paginator(
         $this->DB->fetchCol("SELECT COUNT(*) FROM `jobs`$sql", $data), $page
       );
-      $sql .= " LIMIT {$pgn["x"]}, {$pgn["y"]}";
+      $sql .= " ORDER BY `job_id` DESC LIMIT {$pgn["x"]}, {$pgn["y"]}";
+    } else {
+      $sql .= " ORDER BY `job_id` DESC";
     }
 
     // (D3) RESULTS
     $jobs = $this->DB->fetchAll(
-      "SELECT j.*, c.`company_name`
+      "SELECT j.*, c.`company_name`, c.`company_slug`
        FROM `jobs` `j`
        JOIN `companies` `c` USING (`company_id`)
        $sql", $data, "job_id");

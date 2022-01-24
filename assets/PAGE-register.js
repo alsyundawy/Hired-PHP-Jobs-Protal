@@ -23,8 +23,7 @@ function register () {
     },
     passmsg : false,
     onpass : () => {
-      // @TODO - REDIRECT TO WELCOME PAGE OR SOMEWHERE ELSE
-      location.href = cbhost.base;
+      location.href = cbhost.base + "welcome";
     }
   });
   return false;

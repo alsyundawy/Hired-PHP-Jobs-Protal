@@ -1,10 +1,24 @@
 // (A) FILES TO CACHE
 const cName = "cb-pwa",
 cFiles = [
+  // (A1) BOOTSTRAP
   "assets/bootstrap.bundle.min.js",
   "assets/bootstrap.min.css",
-  "assets/PAGE-cb.js"
-  // @TODO - ADD MORE OF YOUR OWN TO CACHE
+  // (A2) ICONS + IMAGES
+  "assets/favicon.png",
+  "assets/ico-512.png",
+  "assets/gears.jpg",
+  "assets/question.jpg",
+  // (A3) COMMON INTERFACE
+  "assets/PAGE-cb.js",
+  "assets/maticon.woff2",
+  // (A4) PAGES
+  "assets/PAGE-company.js",
+  "assets/PAGE-forgot.js",
+  "assets/PAGE-jobs.js",
+  "assets/PAGE-login.js",
+  "assets/PAGE-myaccount.js",
+  "assets/PAGE-register.js"
 ];
 
 // (B) CREATE/INSTALL CACHE
@@ -16,17 +30,10 @@ self.addEventListener("install", (evt) => {
   );
 });
 
-// (C) CACHE STRATEGY
+// (C) LOAD FROM CACHE FIRST, FALLBACK TO NETWORK IF NOT FOUND
 self.addEventListener("fetch", (evt) => {
-  // (C1) LOAD FROM CACHE FIRST, FALLBACK TO NETWORK IF NOT FOUND
   evt.respondWith(
     caches.match(evt.request)
     .then((res) => { return res || fetch(evt.request); })
   );
-
-  /* (C2) LOAD WITH NETWORK FIRST, FALLBACK TO CACHE IF OFFLINE
-  evt.respondWith(
-    fetch(evt.request)
-     .catch(() => { return caches.match(evt.request); })
-  );*/
 });

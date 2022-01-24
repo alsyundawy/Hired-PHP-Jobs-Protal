@@ -23,11 +23,11 @@
     <meta name="msapplication-TileImage" content="<?=HOST_ASSETS?>icon-512.png">
     <meta name="msapplication-TileColor" content="#ffffff">
 
-    <!-- (A5) WEB APP MANIFEST -- @TODO
+    <!-- (A5) WEB APP MANIFEST -->
     <!-- https://web.dev/add-manifest/ -->
     <link rel="manifest" href="<?=HOST_BASE?>manifest.json">
 
-    <!-- (A6) SERVICE WORKER --
+    <!-- (A6) SERVICE WORKER -->
     <script>if ("serviceWorker" in navigator) {
       navigator.serviceWorker.register("<?=HOST_BASE?>CB-worker.js", {scope: "./"});
     }</script>
@@ -115,7 +115,7 @@
         <!-- (C2-2) LEFT MENU ITEMS -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="<?=HOST_BASE?>page">
+            <a class="nav-link" href="<?=HOST_BASE?>page">
               ADD PAGE HERE
             </a>
           </li>
@@ -145,7 +145,7 @@
           <?php } else { ?>
           <li><a class="dropdown-item" href="<?=HOST_BASE?>login">Login</a></li>
           <li><a class="dropdown-item" href="<?=HOST_BASE?>forgot">Forgot Password</a></li>
-          <li><a class="dropdown-item" href="<?=HOST_BASE?>register">Register - @TODO</a></li>
+          <li><a class="dropdown-item" href="<?=HOST_BASE?>register">Register</a></li>
           <?php } ?>
         </ul>
       </div>

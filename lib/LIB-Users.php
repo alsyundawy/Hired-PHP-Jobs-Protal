@@ -53,6 +53,11 @@ class Users extends Core {
 
     // (C3) SAVE
     $this->save($name, $email, $password);
+
+    // (C4) ACTIVATE SESSION
+    // LAST_ID SOMEHOW MISSES SOMETIMES, SAFER TO USE "FETCH BY EMAIL"
+    $_SESS["user"] = $this->get($email);
+    $this->core->Session->create();
     return true;
   }
 

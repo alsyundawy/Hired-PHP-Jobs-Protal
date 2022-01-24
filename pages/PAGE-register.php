@@ -1,7 +1,6 @@
 <?php
 // (A) ALREADY SIGNED IN
 if (isset($_SESS["user"])) { $_CORE->redirect(); }
-// @TODO - JOB SEEKER OR EMPLOYER
 // (B) HTML PAGE
 $_PMETA = ["load" => [
   ["s", HOST_ASSETS."PAGE-register.js"]

@@ -20,7 +20,6 @@ define("I_CODE", "HIRED_VER");
 
 // (A5) SQL FILES - FROM OLDEST TO NEWEST VERSIONS
 // WILL GET VERSION FROM DATABSE & PROGRESSIVE UPDATE HENCEFORTH
-// @TODO - SET PROJECT SQL FILES
 define("I_DB_SQL", [
   "SQL-hired.sql" //, SQL-coreboxx-1.sql, SQL-coreboxx-2.sql
 ]);
@@ -312,8 +311,8 @@ if ($_PHASE == "E") {
 
   // (E4) CREATE ADMIN USER
   try {
-    $stmt = $pdo->prepare("REPLACE INTO `users` (`user_name`, `user_email`, `user_password`) VALUES (?,?,?)");
-    $stmt->execute([$_POST["aname"], $_POST["aemail"], password_hash($_POST["apass"], PASSWORD_DEFAULT)]);
+    $stmt = $pdo->prepare("REPLACE INTO `users` (`user_name`, `user_email`, `user_role`, `user_password`) VALUES (?,?,?,?)");
+    $stmt->execute([$_POST["aname"], $_POST["aemail"], "A", password_hash($_POST["apass"], PASSWORD_DEFAULT)]);
   } catch (Exception $ex) {
     exit("Error creating admin user - " . $ex->getMessage());
   }
