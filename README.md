@@ -27,7 +27,7 @@ Just replace all the files and access `index.php`, the installer will take care 
 
 
 ## REQUIREMENTS
-1) Not extensively tested, but should work with at least PHP 7.4.
+1) Not extensively tested, but should work with at least PHP 8.0.
 2) PHP MYSQL PDO extension.
 3) Apache server with MOD REWRITE enabled.
 4) "Grade A" browser.
